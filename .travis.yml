@@ -3,11 +3,14 @@ services:
         -docker
 python:
         - "2.7"
-install: 
+install:
         - make deps
-script: 
+script:
         - make lint
         - make test
         - make docker_build
         - make docker_push
-       
+deploy:
+         provider: heroku
+         app: frozen-crag-80108
+         api_key: ${HEROKU_API_KEY}
